@@ -1,42 +1,9 @@
 <div style="text-align: center;">
     <div class="pragmatic_header_logo">
         <h1>
-            <a href="">
-                RiderDetect
+            <a href="{% url 'root' %}">
+                RiderDetect Page
             </a>
         </h1>
-    </div>
-    <div class="pragmatic_header_button">
-        <span class="mx-2">
-            <a href="">
-                Articles
-            </a>
-        </span>
-        <span class="mx-2">
-            <a href="">
-                Projects
-            </a>
-        </span>
-
-            {% if not user.is_authenticated  %}
-                <span class="mx-2">
-                    <a href="">Login</a>
-                </span>
-                <span class="mx-2">
-                     <a href="">SignUp</a>
-                </span>
-            {% else %}
-                <span class="mx-2">
-                   <a href="">
-                       Subscription
-                   </a>
-                </span>
-                <span class="mx-2">
-                    <a href="">MyPage</a>
-                </span>
-                <span class="mx-2">
-                    <a href="">Logout</a>
-                </span>
-            {% endif %}
     </div>
 </div>
