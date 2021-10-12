@@ -4,6 +4,9 @@ from django.views.decorators import gzip
 from django.http import StreamingHttpResponse
 import threading
 import cv2
+import numpy as np
+import time
+import csv
 from image_model.predict import predict
 
 
@@ -11,6 +14,12 @@ from image_model.predict import predict
 
 def helloworld(request):
     return render(request, 'detectapp/helloworld.html')
+
+def ready(request):
+    return render(request, 'detectapp/ready.html')
+
+def detail(request):
+    return render(request, 'detectapp/detail.html')
 
 @gzip.gzip_page
 def detectme(request):
@@ -47,8 +56,41 @@ class VideoCamera(object):
 
     def predict(self):
         while True:
-            # 타임슬립을 하든, delay 1
-            print(predict(self.frame))
+
+            result = predict(self.frame)
+            result_max = np.argmax(result)
+
+            now = time.localtime()
+
+            if result_max == 0:
+                ans = 'backgroud'
+                time.sleep(1)
+                f = open('example_db.csv', 'a', newline='')
+                wr = csv.writer(f)
+                wr.writerow(["%04d/%02d/%02d %02d:%02d:%02d" % (
+                now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec), ans])
+                f.close()
+            elif result_max == 1:
+                ans = 'headgear'
+                time.sleep(1)
+                f = open('example_db.csv', 'a', newline='')
+                wr = csv.writer(f)
+                wr.writerow(["%04d/%02d/%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec), ans])
+                f.close()
+            elif result_max == 2:
+                ans = 'no headgear'
+                time.sleep(1)
+                f = open('example_db.csv', 'a', newline='')
+                wr = csv.writer(f)
+                wr.writerow(["%04d/%02d/%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec), ans])
+                f.close()
+            elif result_max == 3:
+                ans = 'overcrowding'
+                time.sleep(1)
+                f = open('example_db.csv', 'a', newline='')
+                wr = csv.writer(f)
+                wr.writerow(["%04d/%02d/%02d %02d:%02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec), ans])
+                f.close()
 
 def gen(camera):
     while True:
