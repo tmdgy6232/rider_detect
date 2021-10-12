@@ -1,0 +1,78 @@
+.pragmatic_header_logo{
+    margin: 2rem 0;
+    font-family: 'Pacifico', sans-serif;
+}
+
+.pragmatic_header_button{
+    margin-bottom: 2rem;
+}
+
+.pragmatic_footer_button{
+    font-size: .8rem;
+    margin: 1.5rem;
+}
+
+.mw-500 {
+    max-width: 500px;
+    padding: 1rem 1.5rem;
+}
+
+.profile_image {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 20rem;
+    object-fit: cover;
+}
+
+.NNS_B {
+    font-family: "NanumSquareB", cursive;
+}
+
+.round_button {
+    color: black;
+    text-decoration: none;
+    box-shadow : 0 0 3px black;
+    border-radius: 10rem;
+    padding : .2rem
+}
+
+.round_button:hover {
+    color: dimgray;
+}
+
+.article_image {
+    border-radius: 2rem;
+    width : 70%;
+    box-shadow: 0 0 .5rem grey;
+}
+
+.article_content {
+    font-size: 1.1rem;
+    text-align: left;
+    margin: 2rem;
+
+}
+
+.comment_box{
+    text-align: left;
+    border: solid #bebebe;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+@media screen and (max-width: 500px) {
+    html {
+        /* default 16px */
+        font-size: 13px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: black;
+}
